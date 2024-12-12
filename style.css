@@ -12,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 /* Header Text */
@@ -21,10 +22,11 @@ body {
     font-size: 48px;
     text-align: center;
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     animation: glow 1.5s ease-in-out infinite alternate;
+    z-index: 10;
 }
 
 /* Center Image */
@@ -35,58 +37,86 @@ body {
     transform: translate(-50%, -50%);
     max-width: 200px;
     width: 40%;
-    transition: transform 0.2s;
+    z-index: 10;
 }
 
-/* Hover Shake Effect */
-.center-image:hover {
-    animation: shake 0.5s ease-in-out;
-}
-
-/* Purchase Text */
-.purchase-text {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
+/* Wild Shapes */
+.wild-shape {
     position: absolute;
-    top: calc(50% + 130px);
-    left: 50%;
-    transform: translateX(-50%);
-    animation: pulse 2s infinite;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4500, 0 0 30px orange;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5), rgba(255,0,0,0.8));
+    animation: float 8s ease-in-out infinite;
+    opacity: 0.8;
 }
 
-/* Text Glow Effect */
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 30px orange;
+/* Rotating Mirrors */
+.mirror {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #cccccc, #ffffff);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    animation: rotate 6s linear infinite;
+}
+
+/* Exploding Bursts */
+.burst {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: conic-gradient(from 90deg, red, yellow, pink, purple, blue);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: pop 4s ease-in-out infinite alternate;
+    opacity: 0.9;
+}
+
+/* Floating Shapes Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
     }
-    to {
-        text-shadow: 0 0 20px #ff4500, 0 0 30px #ff4500, 0 0 40px #ff4500;
+    50% {
+        transform: translateY(-50px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
     }
 }
 
-/* Shake Animation */
-@keyframes shake {
-    0% { transform: translate(-50%, -50%) rotate(0); }
-    25% { transform: translate(-50%, calc(-50% - 5px)) rotate(-2deg); }
-    50% { transform: translate(-50%, calc(-50% + 5px)) rotate(2deg); }
-    75% { transform: translate(-50%, calc(-50% - 5px)) rotate(-2deg); }
-    100% { transform: translate(-50%, -50%) rotate(0); }
+/* Rotating Animation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-/* Pulse Animation for Purchase Text */
-@keyframes pulse {
-    0% { transform: translateX(-50%) scale(1); opacity: 1; }
-    50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
-    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+/* Bursts Animation */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0.4;
+    }
 }
 
 /* Background Gradient Animation */
 @keyframes gradient-pulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
