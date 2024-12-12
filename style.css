@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #cb1a1a, #971200, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradient-pulse 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header Text */
+.header-text {
+    color: orange;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 48px;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Center Image */
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 200px;
+    width: 40%;
+    transition: transform 0.2s;
+}
+
+/* Hover Shake Effect */
+.center-image:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Purchase Text */
+.purchase-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    top: calc(50% + 130px);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: pulse 2s infinite;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4500, 0 0 30px orange;
+}
+
+/* Text Glow Effect */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 30px orange;
+    }
+    to {
+        text-shadow: 0 0 20px #ff4500, 0 0 30px #ff4500, 0 0 40px #ff4500;
+    }
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0); }
+    25% { transform: translate(-50%, calc(-50% - 5px)) rotate(-2deg); }
+    50% { transform: translate(-50%, calc(-50% + 5px)) rotate(2deg); }
+    75% { transform: translate(-50%, calc(-50% - 5px)) rotate(-2deg); }
+    100% { transform: translate(-50%, -50%) rotate(0); }
+}
+
+/* Pulse Animation for Purchase Text */
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* Background Gradient Animation */
+@keyframes gradient-pulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
